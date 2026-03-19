@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- MODIFIER : le titre de l'article -->
+  <title>Titre de l'article — Pierrick Jay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #3d2b1f;
+      --paper: #d4c5a9;
+      --paper-light: #e0d4bb;
+      --paper-dark: #c4b48a;
+      --muted: #6b5235;
+      --accent: #8b4513;
+      --rule: #b8a882;
+      --max-width: 640px;
+    }
+
+    html { font-size: 17px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      background-color: var(--paper);
+      color: var(--ink);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Leather spine left edge */
+    body::after {
+      content: '';
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--accent);
+      z-index: 200;
+    }
+
+    /* === BACK LINK === */
+    .back {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 2rem 0;
+    }
+
+    .back a {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+
+    .back a:hover { color: var(--accent); }
+
+    .back a::before { content: '← '; }
+
+    /* === ARTICLE HEADER === */
+    .article-header {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .article-header .category {
+      display: inline-block;
+      background: var(--paper-light);
+      border: 1px solid var(--paper-dark);
+      padding: 0.25rem 0.8rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transform: rotate(-1deg);
+      margin-bottom: 1.2rem;
+    }
+
+    .article-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .article-header .meta {
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .article-header .rule {
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+      margin: 2rem auto 0;
+    }
+
+    /* === ARTICLE BODY === */
+    article {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    article p {
+      font-size: 0.95rem;
+      margin-bottom: 1.4rem;
+    }
+
+    /* Lettrine */
+    article p:first-of-type::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      float: left;
+      line-height: 0.75;
+      margin-right: 0.08em;
+      margin-top: 0.06em;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    article h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    article blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 2rem 0;
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    article strong { font-weight: 700; }
+    article em { font-style: italic; }
+
+    article a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    article a:hover { text-decoration: none; }
+
+    /* === SEPARATOR === */
+    .separator {
+      text-align: center;
+      margin: 2.5rem 0;
+      color: var(--rule);
+      font-size: 1.2rem;
+      letter-spacing: 0.5em;
+    }
+
+    /* === FOOTER === */
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+      border-top: 1px solid var(--rule);
+      text-align: center;
+    }
+
+    footer p {
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 600px) {
+      html { font-size: 15px; }
+      .article-header { padding: 2rem 1.5rem 1.5rem; }
+      .article-header h1 { font-size: 1.8rem; }
+      article { padding: 2rem 1.5rem 3rem; }
+      .back { padding: 1.5rem 1.5rem 0; }
+    }
+
+    /* === FADE IN === */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="back fade-in">
+    <a href="../index.html">Retour</a>
+  </div>
+
+  <header class="article-header fade-in">
+    <!-- MODIFIER : la catégorie (Carnet de bord / Conviction / Réflexion) -->
+    <p class="category">Carnet de bord</p>
+
+    <!-- MODIFIER : le titre -->
+    <h1>Titre de l'article</h1>
+
+    <!-- MODIFIER : la date -->
+    <p class="meta">15 mars 2026 · Pierrick Jay</p>
+
+    <div class="rule"></div>
+  </header>
+
+  <article class="fade-in">
+
+    <!-- ÉCRIRE ICI -->
+    <!-- Chaque paragraphe dans une balise <p> -->
+    <!-- Le premier paragraphe aura automatiquement une lettrine -->
+
+    <p>Voici le premier paragraphe de l'article. La première lettre sera mise en valeur automatiquement.</p>
+
+    <p>Deuxième paragraphe. </p>
+
+    <!-- Pour un intertitre : -->
+    <h2>Un intertitre</h2>
+
+    <p>Le texte qui suit.</p>
+
+    <!-- Pour une citation : -->
+    <blockquote>
+      Une citation ou une phrase que tu veux mettre en avant, en retrait du texte principal.
+    </blockquote>
+
+    <p>La suite du texte après la citation.</p>
+
+    <!-- Pour un séparateur visuel (changement de sujet) : -->
+    <div class="separator">• • •</div>
+
+    <p>Un nouveau mouvement dans le texte, après le séparateur.</p>
+
+  </article>
+
+  <footer>
+    <p>Merci d'avoir lu. <a href="../index.html">Revenir à l'accueil</a></p>
+  </footer>
+
+</body>
+</html>
